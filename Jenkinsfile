@@ -1,28 +1,17 @@
 pipeline {
    agent any
    stages {
-     stage('Checkout Terraform code') {
-       steps {
-         git 'https://github.com/Tech-Overlord/terraform-docker-ghostblog.git'
-       }
-     }
-     stage('Terraform version') {
-       steps {
-          sh 'terraform -version'
-          sh 'pwd'
-       }
-     }
      stage('Terraform Plan') {
        steps {
           sh 'sudo terraform init'
-          sh 'sudo terraform plan -var "env=prod"'
+          sh 'sudo terraform plan -var "env=prod" -out=plan'
        }
      }
      stage('Terraform Apply') {
        steps {
-         input 'Does the plan look good to go?'
+         input 'Does the terraform execution plan look good to be applied?'
          milestone(1)
-         sh 'echo "Proceeding now!"'
+         sh 'sudo terraform apply'
        }
      }
    }
