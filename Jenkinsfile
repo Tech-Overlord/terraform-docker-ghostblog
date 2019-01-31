@@ -11,7 +11,7 @@ pipeline {
        steps {
          input 'Does the terraform execution plan look good to be applied?'
          milestone(1)
-         sh 'sudo terraform apply "plan"'
+         su 'sudo terraform apply "plan" -auto-approve'
          sh 'sudo -R chown jenkins:jenkins *'
        }
      }
