@@ -14,6 +14,7 @@ pipeline {
      }
      stage('Terraform Plan') {
        steps {
+          sh 'terraform init'
           sh 'terraform plan -var "env=prod"'
        }
      }
