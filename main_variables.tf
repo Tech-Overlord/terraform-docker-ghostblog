@@ -11,8 +11,8 @@ variable "container_image"
   type = "map"
   default =
   {
-    dev = "ghost:alpine"
-    prod = "ghost:alpine"
+    dev = "ghost:2"
+    prod = "ghost:2"
   }
 }
 
