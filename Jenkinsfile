@@ -14,8 +14,8 @@ pipeline {
      }
      stage('Terraform Plan') {
        steps {
-          sh 'terraform init'
-          sh 'terraform plan -var "env=prod"'
+          sh 'sudo terraform init'
+          sh 'sudo terraform plan -var "env=prod"'
        }
      }
      stage('Terraform Apply') {
